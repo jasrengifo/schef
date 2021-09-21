@@ -18,7 +18,7 @@ class IngredientCategories
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity=ingredient::class, inversedBy="category")
+     * @ORM\ManyToOne(targetEntity=Ingredient::class, inversedBy="category")
      * @ORM\JoinColumn(nullable=false)
      */
     private $id_ingredient;
@@ -34,12 +34,12 @@ class IngredientCategories
         return $this->id;
     }
 
-    public function getIdIngredient(): ?ingredient
+    public function getIdIngredient(): ?Ingredient
     {
         return $this->id_ingredient;
     }
 
-    public function setIdIngredient(?ingredient $id_ingredient): self
+    public function setIdIngredient(?Ingredient $id_ingredient): self
     {
         $this->id_ingredient = $id_ingredient;
 

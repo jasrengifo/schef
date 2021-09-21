@@ -6,6 +6,7 @@ use App\Repository\UserRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints\Date;
 
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
@@ -71,11 +72,12 @@ class User
 
 
 
-
-
     public function __construct()
     {
         $this->recipes = new ArrayCollection();
+        $this->banned = false;
+        $this->created = new Date('Y-m-d H:i:s');
+        $this->updated = new Date('Y-m-d H:i:s');
     }
 
     public function getId(): ?int

@@ -18,7 +18,7 @@ class RecipeAttributeValue
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity=recipeAttribute::class, inversedBy="recipe_attribute_values")
+     * @ORM\ManyToOne(targetEntity=RecipeAttribute::class, inversedBy="recipe_attribute_values")
      * @ORM\JoinColumn(nullable=false)
      */
     private $recipe_attribute;

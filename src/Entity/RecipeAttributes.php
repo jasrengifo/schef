@@ -18,19 +18,19 @@ class RecipeAttributes
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity=recipe::class, inversedBy="recipeAttributes")
+     * @ORM\ManyToOne(targetEntity=recipe::class, inversedBy="RecipeAttributes")
      * @ORM\JoinColumn(nullable=false)
      */
     private $recipe;
 
     /**
-     * @ORM\ManyToOne(targetEntity=recipeAttribute::class)
+     * @ORM\ManyToOne(targetEntity=RecipeAttribute::class)
      * @ORM\JoinColumn(nullable=false)
      */
     private $recipe_attribute;
 
     /**
-     * @ORM\ManyToOne(targetEntity=recipeAttributeValue::class)
+     * @ORM\ManyToOne(targetEntity=RecipeAttributeValue::class)
      * @ORM\JoinColumn(nullable=false)
      */
     private $recipe_attribute_value;
@@ -52,24 +52,24 @@ class RecipeAttributes
         return $this;
     }
 
-    public function getRecipeAttribute(): ?recipeAttribute
+    public function getRecipeAttribute(): ?RecipeAttribute
     {
         return $this->recipe_attribute;
     }
 
-    public function setRecipeAttribute(?recipeAttribute $recipe_attribute): self
+    public function setRecipeAttribute(?RecipeAttribute $recipe_attribute): self
     {
         $this->recipe_attribute = $recipe_attribute;
 
         return $this;
     }
 
-    public function getRecipeAttributeValue(): ?recipeAttributeValue
+    public function getRecipeAttributeValue(): ?RecipeAttributeValue
     {
         return $this->recipe_attribute_value;
     }
 
-    public function setRecipeAttributeValue(?recipeAttributeValue $recipe_attribute_value): self
+    public function setRecipeAttributeValue(?RecipeAttributeValue $recipe_attribute_value): self
     {
         $this->recipe_attribute_value = $recipe_attribute_value;
 

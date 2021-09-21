@@ -19,6 +19,14 @@ class RecipeRepository extends ServiceEntityRepository
         parent::__construct($registry, Recipe::class);
     }
 
+    public function getAllRecipes(){
+        return $this->getEntityManager()
+            ->createQuery("
+                SELECT IDENTITY(Recipe.id_user) id_user, Recipe.default_name
+                FROM App:Recipe Recipe
+            ")->getResult();
+    }
+
     // /**
     //  * @return Recipe[] Returns an array of Recipe objects
     //  */
