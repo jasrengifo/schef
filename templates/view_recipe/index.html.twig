@@ -8,23 +8,52 @@
     .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
 </style>
 
-<div class="example-wrapper">
+<div class="container">
     <h1>{{ recipe.default_name }}</h1>
-    <div class="container">
+    <div class="row">
         <div class="col-lg-6">
             <div class="row">
                 <div class="col-lg-12 my-3"><h2>Caracteristicas</h2></div>
-                <div class="col-lg-3 bg-white">
+
+                <div class="col-lg-3 bg-white py-3">
                     <div class="row">
                         <div class="col-lg-12 text-center">
-                            <i class="bi bi-exclamation-lg"></i>d
+                            <i class="fas fa-burn fa-2x" data-bs-toggle="tooltip" data-bs-placement="top" title="Calorías"></i>
+                        </div>
+                        <div class="col-lg-12 text-center">
+                            {{ recipe.calories }} cal.
                         </div>
                     </div>
                 </div>
+
+                <div class="col-lg-3 bg-white py-3">
+                    <div class="row">
+                        <div class="col-lg-12 text-center">
+                            <i class="fas fa-stopwatch fa-2x" data-bs-toggle="tooltip" data-bs-placement="top" title="Tiempo de preparación"></i>
+                        </div>
+                        <div class="col-lg-12 text-center">
+                            {{ recipe.time }} min.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 bg-white py-3">
+                    <div class="row">
+                        <div class="col-lg-12 text-center">
+                            <i class="fas fa-seedling fa-2x" data-bs-toggle="tooltip" data-bs-placement="top" title="Vegano"></i>
+                        </div>
+                        <div class="col-lg-12 text-center">
+                            {% if recipe.vegan == false %}No{% else %}Si{% endif %}
+                        </div>
+                    </div>
+                </div>
+
+
             </div>
         </div>
     </div>
 
 
 </div>
+
 {% endblock %}

@@ -40,6 +40,17 @@ class RecipeRepository extends ServiceEntityRepository
             ")->setParameter("id_recipe", $id_recipe);;
     }
 
+    public function getIngredientsByRecipeId($id_recipe){
+        return $this->getEntityManager()
+
+            //ras.recipe_attribute_id = 1 [Calorias]
+            ->createQuery("
+                SELECT Recipe.id, IDENTITY(Recipe.id_user) id_user, Recipe.default_name, Recipe.calories, Recipe.time, Recipe.vegan  
+                FROM App:Recipe Recipe WHERE Recipe.id
+                 = :id_recipe
+            ")->setParameter("id_recipe", $id_recipe);;
+    }
+
     // /**
     //  * @return Recipe[] Returns an array of Recipe objects
     //  */

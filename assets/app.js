@@ -6,16 +6,32 @@
  */
 
 // any CSS you import will output into a single css file (app.scss in this case)
-import './styles/app.scss';
-import $ from 'jquery';
 
+import './styles/app.scss';
+import '@popperjs/core/lib/popper.js'
+import('jquery-ui/ui/widgets/tooltip.js');
+import $ from 'jquery';
 // start the Stimulus application
 import './bootstrap';
+import bootstrap from 'bootstrap/dist/js/bootstrap.bundle'
+
+
+import '@fortawesome/fontawesome-free/js/all.js';
+
+
 
 $(document).ready(
     function(){
-        $('[data-toggle="popover"]').popover();
+
+        var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+        var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+            return new bootstrap.Tooltip(tooltipTriggerEl)
+        })
+
+
+
+
     }
+
 );
 
-console.log('test');
