@@ -19,12 +19,14 @@ class RecipeRepository extends ServiceEntityRepository
         parent::__construct($registry, Recipe::class);
     }
 
-    public function getAllRecipes(){
+    public function getAllRecipesLite(){
         return $this->getEntityManager()
+
+            //ras.recipe_attribute_id = 1 [Calorias]
             ->createQuery("
-                SELECT IDENTITY(Recipe.id_user) id_user, Recipe.default_name
+                SELECT Recipe.id, IDENTITY(Recipe.id_user) id_user, Recipe.default_name, Recipe.calories, Recipe.time, Recipe.vegan  
                 FROM App:Recipe Recipe
-            ")->getResult();
+            ");
     }
 
     // /**

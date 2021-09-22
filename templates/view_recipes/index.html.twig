@@ -16,64 +16,43 @@
     <div class="row">
 
         <div class="col-lg-12">
+            <div class="count">
+                {{ pagination.getTotalItemCount }}
+
+                {{ dump(valores) }}
+            </div>
             <table class="table table-hover">
 
                 <thead>
+
                     <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Nombre</th>
+                        {# sorting of properties based on query components #}
+                        <th>{{ knp_pagination_sortable(pagination, 'Id', 'Recipe.id') }}</th>
+                        <th{% if pagination.isSorted('Recipe.default_name') %} class="sorted"{% endif %}>
+                            {{ knp_pagination_sortable(pagination, 'Nombre', 'Recipe.default_name') }}
+                        </th>
                         <th scope="col">Calorias</th>
                         <th scope="col">Tiempo</th>
                         <th scope="col">Vegano</th>
                         <th scope="col">Opciones</th>
                     </tr>
+
                 </thead>
 
                 <tbody>
 
-                {{ dump(recetas) }}
-                {{ dump(receta) }}
 
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>Empanadas de dominó</td>
-                        <td>473/100g</td>
-                        <td>40 min</td>
-                        <td>No</td>
+                {% for recipe in pagination %}
+                    <tr {% if loop.index is odd %}class="color"{% endif %}>
+                        <th>{{ recipe.id }}</th>
+                        <td>{{ recipe.default_name }}</td>
+                        <td>{{ recipe.calories }}</td>
+                        <td>{{ recipe.time }}</td>
+                        <td>{% if recipe.vegan == false %}No{% else %}Si{% endif %}</td>
                         <td><button class="btn btn-success">Editar</button></td>
                     </tr>
-                    <tr>
-                        <th scope="row">2</th>
-                        <td>Pasta al pesto con Champiñones</td>
-                        <td>388/100g</td>
-                        <td>30 min</td>
-                        <td>Si</td>
-                        <td><button class="btn btn-success">Editar</button></td>
-                    </tr>
-                    <tr>
-                        <th scope="row">3</th>
-                        <td>Camarones al Ajillo</td>
-                        <td>170/100g</td>
-                        <td>30 min</td>
-                        <td>No</td>
-                        <td><button class="btn btn-success">Editar</button></td>
-                    </tr>
-                    <tr>
-                        <th scope="row">4</th>
-                        <td>Ensalada Rusa</td>
-                        <td>250/100g</td>
-                        <td>25 min</td>
-                        <td>Si</td>
-                        <td><button class="btn btn-success">Editar</button></td>
-                    </tr>
-                    <tr>
-                        <th scope="row">5</th>
-                        <td>Ceviche de Calamares y Camarones</td>
-                        <td>260/100g</td>
-                        <td>1 Hora</td>
-                        <td>No</td>
-                        <td><button class="btn btn-success">Editar</button></td>
-                    </tr>
+                {% endfor %}
+
                 </tbody>
 
             </table>

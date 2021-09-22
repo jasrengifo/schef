@@ -75,6 +75,22 @@ class Recipe
      */
     private $recipeAttributes;
 
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $calories;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $time;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $vegan;
+
+
     public function __construct()
     {
         $this->ingredients = new ArrayCollection();
@@ -86,6 +102,38 @@ class Recipe
     public function getId(): ?int
     {
         return $this->id;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getTime()
+    {
+        return $this->time;
+    }
+
+    /**
+     * @param mixed $time
+     */
+    public function setTime($time): void
+    {
+        $this->time = $time;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getVegan()
+    {
+        return $this->vegan;
+    }
+
+    /**
+     * @param mixed $vegan
+     */
+    public function setVegan($vegan): void
+    {
+        $this->vegan = $vegan;
     }
 
     public function getDefaultName(): ?string
@@ -134,6 +182,22 @@ class Recipe
         $this->id_user = $id_user;
 
         return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCalories()
+    {
+        return $this->calories;
+    }
+
+    /**
+     * @param mixed $calories
+     */
+    public function setCalories($calories): void
+    {
+        $this->calories = $calories;
     }
 
     public function getPremium(): ?bool
