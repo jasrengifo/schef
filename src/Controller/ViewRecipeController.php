@@ -16,10 +16,14 @@ class ViewRecipeController extends AbstractController
     public function index(Request $request, $id_recipe): Response
     {
         $em = $this->getDoctrine()->getManager();
-        $recetas_query = $em->getRepository(Recipe::class)->getRecipeById($id_recipe)->getSingleResult();
+        $recipe = $em->getRepository(Recipe::class)->getRecipeById($id_recipe)->getSingleResult();
+        $ingredients = $em->getRepository(Recipe::class)->getIngredientsByRecipeId($id_recipe)->getResult();
+        $steps = $em->getRepository(Recipe::class)->getStepsByRecipeId($id_recipe)->getResult();
         return $this->render('view_recipe/index.html.twig', [
             'controller_name' => 'ViewRecipeController',
-            'recipe' => $recetas_query
+            'recipe' => $recipe,
+            'ingredients' => $ingredients,
+            'steps' => $steps
         ]);
     }
 }

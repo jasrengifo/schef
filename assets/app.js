@@ -28,9 +28,6 @@ $(document).ready(
             return new bootstrap.Tooltip(tooltipTriggerEl)
         })
 
-
-
-
     }
 
 );
