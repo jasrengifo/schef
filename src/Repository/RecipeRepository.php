@@ -37,7 +37,7 @@ class RecipeRepository extends ServiceEntityRepository
                 SELECT Recipe.id, IDENTITY(Recipe.id_user) id_user, Recipe.default_name, Recipe.calories, Recipe.time, Recipe.vegan  
                 FROM App:Recipe Recipe WHERE Recipe.id
                  = :id_recipe
-            ")->setParameter("id_recipe", $id_recipe);;
+            ")->setParameter("id_recipe", $id_recipe);
     }
 
     public function getIngredientsByRecipeId($id_recipe){
@@ -48,7 +48,7 @@ class RecipeRepository extends ServiceEntityRepository
                 FROM App:RecipeIngredients Ingredient 
                 INNER JOIN App:Ingredient IngredientName WITH Ingredient.ingredient = IngredientName.id 
                 WHERE IDENTITY(Ingredient.recipe) = :id_recipe
-            ")->setParameter("id_recipe", $id_recipe);;
+            ")->setParameter("id_recipe", $id_recipe);
     }
 
     public function getStepsByRecipeId($id_recipe){
@@ -58,7 +58,17 @@ class RecipeRepository extends ServiceEntityRepository
                 SELECT Step.id id_step, Step.value, Step.image    
                 FROM App:RecipeSteps Step 
                 WHERE IDENTITY(Step.recipe) = :id_recipe
-            ")->setParameter("id_recipe", $id_recipe);;
+            ")->setParameter("id_recipe", $id_recipe);
+    }
+
+    public function getImagesByRecipeId($id_recipe){
+        return $this->getEntityManager()
+            //ras.recipe_attribute_id = 1 [Calorias]
+            ->createQuery("
+                SELECT IDENTITY(Image.recipe), Image.image    
+                FROM App:RecipeImages Image 
+                WHERE IDENTITY(Image.recipe) = :id_recipe
+            ")->setParameter("id_recipe", $id_recipe);
     }
 
     // /**

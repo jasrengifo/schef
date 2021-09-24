@@ -19,11 +19,13 @@ class ViewRecipeController extends AbstractController
         $recipe = $em->getRepository(Recipe::class)->getRecipeById($id_recipe)->getSingleResult();
         $ingredients = $em->getRepository(Recipe::class)->getIngredientsByRecipeId($id_recipe)->getResult();
         $steps = $em->getRepository(Recipe::class)->getStepsByRecipeId($id_recipe)->getResult();
+        $images = $em->getRepository(Recipe::class)->getImagesByRecipeId($id_recipe)->getResult();
         return $this->render('view_recipe/index.html.twig', [
             'controller_name' => 'ViewRecipeController',
             'recipe' => $recipe,
             'ingredients' => $ingredients,
-            'steps' => $steps
+            'steps' => $steps,
+            'images' => $images
         ]);
     }
 }
