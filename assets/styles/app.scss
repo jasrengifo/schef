@@ -1,5 +1,8 @@
 @import "~bootstrap/scss/bootstrap";
 @import "~@fortawesome/fontawesome-free/scss/fontawesome.scss";
+@import "~tinymce/skins/ui/oxide/skin.min.css";
+@import "~tinymce/skins/ui/oxide-dark/skin.min.css";
+@import "~tinymce/skins/ui/oxide/content.min.css";
 body {
     background-color: lightgray;
 }
@@ -11,5 +14,9 @@ body {
 .step-image{
     max-width: 100%;
     border-radius: 8px;
+}
+
+.text-justify{
+    text-align: justify;
 }
 

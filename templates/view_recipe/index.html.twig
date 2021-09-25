@@ -19,7 +19,7 @@
                 <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
                 <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
             </div>
-            <div class="carousel-inner">
+            <div class="carousel-inner pt-4">
                 {% set first_image = 0 %}
                 {% for image in images %}
                     <div class="carousel-item {%  if first_image == 0 %}active{% endif %}">
@@ -43,7 +43,32 @@
 
 
     <div class="row">
-        <div class="col-lg-4">
+        <div class="col-lg-9 ">
+            <div class="row">
+                <div class="col-lg-12 my-3"><h2>Paso a Paso</h2></div>
+
+                <div class="col-lg-12  pt-1">
+                    <div class="col-lg-12 bg-white">
+                        {% set step_number  = 1 %}
+                        {% for step in steps %}
+                            <div class="row p-3 px-4 border-bottom">
+                                <div class="col-lg-1 align-middle step-number">{{ step_number }}</div>
+                                <div class="col-lg-11 d-flex"> <span class="my-2 text-justify">{{ step.value|raw }}</span></div>
+                                <div class="col-lg-12 text-center py-3"><img class="step-image" src="{{ step.image }}" /></div>
+                            </div>
+                            {% set step_number  = step_number + 1 %}
+                        {% endfor %}
+
+
+
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+        <div class="col-lg-3">
             <div class="row">
                 <div class="col-lg-12 my-3"><h2>Caracteristicas</h2></div>
 
@@ -97,30 +122,7 @@
             </div>
         </div>
 
-        <div class="col-lg-8 ">
-            <div class="row">
-                <div class="col-lg-12 my-3"><h2>Paso a Paso</h2></div>
 
-            <div class="col-lg-12  pt-1">
-                <div class="col-lg-12 bg-white">
-                    {% set step_number  = 1 %}
-                    {% for step in steps %}
-                        <div class="row p-3 px-4 border-bottom">
-                            <div class="col-lg-1 align-middle step-number">{{ step_number }}</div>
-                            <div class="col-lg-11 d-flex"> <span class="my-2">{{ step.value|raw }}</span></div>
-                            <div class="col-lg-12 text-center py-3"><img class="step-image" src="{{ step.image }}" /></div>
-                        </div>
-                        {% set step_number  = step_number + 1 %}
-                    {% endfor %}
-
-
-
-                </div>
-
-            </div>
-        </div>
-
-    </div>
     </div>
 
 </div>

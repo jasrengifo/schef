@@ -16,6 +16,12 @@ import './bootstrap';
 import bootstrap from 'bootstrap/dist/js/bootstrap.bundle'
 
 
+import 'tinymce/tinymce.min'
+import 'tinymce/themes/silver/theme.min'
+import 'tinymce/icons/default/icons'
+
+
+
 import '@fortawesome/fontawesome-free/js/all.js';
 
 
@@ -27,6 +33,14 @@ $(document).ready(
         var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
             return new bootstrap.Tooltip(tooltipTriggerEl)
         })
+
+        tinymce.init({
+            selector: '.tinymce',
+            skin: 'oxide-dark',
+            content_css: 'dark',
+            branding: false,
+            menubar: 'file edit insert view format table tools help'
+        });
 
     }
 
